@@ -2,8 +2,11 @@
 Spring Config server .Create the server where we can read the properties from git .depend on Env.
 
 #Enable COnfig server
+
 @SpringBootApplication
+
 @EnableConfigServer
+
 public class ConfigserverApplication {
 
 	public static void main(String[] args) {
@@ -12,18 +15,28 @@ public class ConfigserverApplication {
 }
 
 #application properties changes
+
 server.port=8888
+
 #project run port number
+
 spring.cloud.config.server.git.uri=https://github.com/kadamshridhar01/springConfig-dev.git
+
 #Git location where the property files stored.
+
 management.security.enabled=false
+
 #Enable endpoint like Env make testing easy for us.
 
 
 #calling property from differnt Env .please refer git project springconfig-dev project repository.
+
 Get request like http://localhost:${server.port}/${spring.application.name}/${Env}
+
 curl -get http://localhost:8888/orderservice/prod 
+
 response :- you will get the all properties as key value.
+
 {
     "name": "orderservice",
     "profiles": [
